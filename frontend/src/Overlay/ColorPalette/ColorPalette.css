@@ -1,0 +1,21 @@
+@reference "../../tailwind.css";
+
+#color-palette {
+	@apply flex items-center gap-1 grow;
+}
+
+.color-button {
+	@apply flex items-center;
+	@apply opacity-60 hover:opacity-80 transition-all duration-100;
+	@apply border-3 border-neutral-300 dark:border-neutral-500;
+}
+
+.color-button.color-button--selected {
+	@apply border-blue-500 dark:border-blue-700 rounded-sm opacity-100;
+	transform: scale(1.35);
+	transform-origin: center;
+}
+
+.color-button-wrapper {
+	@apply h-5 w-5;
+}

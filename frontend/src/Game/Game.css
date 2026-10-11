@@ -1,0 +1,8 @@
+@reference "../tailwind.css";
+
+#game {
+	@apply grid;
+	@apply w-full h-full bg-amber-200/10;
+	@apply min-w-200 min-h-150;
+	@apply overflow-auto;
+}

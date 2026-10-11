@@ -1,0 +1,59 @@
+@reference "../../tailwind.css";
+
+#library-drawer {
+	@apply h-[calc(100vh-(--spacing(6)))];
+	@apply absolute -right-200 top-7 py-6 pr-4;
+	@apply transition-all duration-400 ease-in-out;
+	@apply flex flex-col;
+}
+
+#library-drawer.show {
+	@apply right-0;
+}
+
+#library {
+	@apply flex flex-col gap-1;
+	@apply overflow-auto;
+}
+
+.pattern-library-item {
+	@apply px-6 pb-1 border-4;
+	@apply border-neutral-400/0 rounded-lg;
+	@apply flex flex-col items-center;
+	@apply bg-neutral-100/80 dark:bg-neutral-700/80 shadow-md;
+	@apply transition-all duration-300;
+	@apply cursor-pointer;
+}
+
+.pattern-library-item.selected {
+	@apply border-blue-500 dark:border-blue-600;
+	@apply bg-neutral-100 dark:bg-neutral-600;
+}
+
+.pattern-name {
+	@apply pb-1 text-neutral-800 dark:text-neutral-300;
+	@apply text-sm uppercase;
+}
+
+.pattern-library-item.selected .pattern-name {
+	@apply font-black underline;
+	@apply text-blue-500 dark:text-blue-400;
+}
+
+.pattern-preview {
+	@apply border-2 border-neutral-300 dark:border-neutral-500;
+}
+
+.pattern-preview-cell {
+	@apply border border-neutral-300 dark:border-neutral-700;
+	@apply h-1.5 w-1.5 m-0 p-0 box-content;
+}
+
+.pattern-preview-cell.live {
+	@apply bg-neutral-400 dark:bg-neutral-200/50;
+	@apply transition-all duration-300;
+}
+
+.pattern-library-item.selected .pattern-preview-cell.live {
+	@apply bg-blue-500 dark:bg-blue-600;
+}

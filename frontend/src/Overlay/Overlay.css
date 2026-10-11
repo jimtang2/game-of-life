@@ -1,0 +1,23 @@
+@reference "../tailwind.css";
+
+#overlay {
+	@apply z-40 fixed;
+	@apply w-full h-full;
+	pointer-events: none;
+}
+
+#toolbar {
+	@apply w-full bg-neutral-100 dark:bg-neutral-900/90;
+	@apply absolute top-0 left-0 px-2 py-1;
+	@apply border-b border-neutral-200 dark:border-neutral-900;
+	@apply flex;
+	pointer-events: auto;
+}
+
+#toolbar-colors {
+	@apply grow;
+}
+
+#toolbar button {
+	@apply dark:bg-neutral-600;
+}

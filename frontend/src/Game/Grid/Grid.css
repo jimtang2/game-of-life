@@ -1,0 +1,12 @@
+@reference "../../tailwind.css";
+
+.cell {
+	@apply border border-neutral-300 dark:border-gray-900;
+	@apply h-5 w-5 m-0 p-0 box-content;
+	@apply transition-all duration-200;
+}
+
+.cell-wrapper {
+	@apply border border-neutral-200 dark:border-neutral-700 rounded-sm;
+	@apply h-full w-full;
+}

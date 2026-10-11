@@ -1,0 +1,32 @@
+@import "./tailwind.css";
+
+html,
+body,
+#root {
+	@apply m-0 p-0 w-screen h-screen;
+	@apply bg-neutral-200 dark:bg-neutral-800;
+}
+
+input {
+	@apply border border-neutral-400 rounded-md;
+	@apply text-base px-1;
+}
+
+label {
+	@apply font-bold px-1;
+}
+
+button {
+	@apply cursor-pointer;
+	@apply border border-neutral-600 rounded-md px-1;
+	@apply dark:text-neutral-200;
+}
+
+.hide-scrollbar {
+	-ms-overflow-style: none; /* IE/Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+	display: none; /* Chrome/Safari/Opera */
+}
