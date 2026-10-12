@@ -1,29 +1,27 @@
-IMAGE_NAME ?= game-of-life
-CONTAINER_NAME ?= game-of-life
-HOST_PORT ?= 8888
-CONTAINER_PORT ?= 80
-
 .PHONY: build-docker run-docker
 
-build-docker:
-	docker build -t $(IMAGE_NAME) .
+IMAGE_NAME ?= game-of-life
+PLATFORMS ?= linux/amd64,linux/arm64
+REGISTRY ?= jimtang2
 
-export GOL_SERVER_PORT := 8888
-export GOL_SERVER_SHUTDOWN_TIMEOUT := 10s
-export GOL_WEBSOCKET_ORIGIN_PATTERNS := *
-export GOL_GAME_WIDTH := 100
-export GOL_GAME_HEIGHT := 50
-export GOL_GAME_INTERVAL := 100ms
-export GOL_GAME_EDGE_MODE := limit
+build-docker:
+	docker build -t $(IMAGE_NAME):latest --platform $(PLATFORMS) .
+
+build-push-docker:
+	docker buildx build -t $(REGISTRY)/$(IMAGE_NAME):latest --platform $(PLATFORMS) --push .
+
+CONTAINER_NAME ?= game-of-life
+HOST_PORT ?= 8888
+CONTAINER_PORT ?= 8080
+GOL_GAME_WIDTH := 100
+GOL_GAME_HEIGHT := 50
+GOL_GAME_INTERVAL := 100ms
 
 run-docker:
 	docker run --rm \
 		--name $(CONTAINER_NAME) \
-		-p $(GOL_SERVER_PORT):80 \
-		-e GOL_SERVER_SHUTDOWN_TIMEOUT=$(GOL_SERVER_SHUTDOWN_TIMEOUT) \
-		-e GOL_WEBSOCKET_ORIGIN_PATTERNS=$(GOL_WEBSOCKET_ORIGIN_PATTERNS) \
+		-p $(HOST_PORT):$(CONTAINER_PORT) \
 		-e GOL_GAME_WIDTH=$(GOL_GAME_WIDTH) \
 		-e GOL_GAME_HEIGHT=$(GOL_GAME_HEIGHT) \
 		-e GOL_GAME_INTERVAL=$(GOL_GAME_INTERVAL) \
-		-e GOL_GAME_EDGE_MODE=$(GOL_GAME_EDGE_MODE) \
 		$(IMAGE_NAME)

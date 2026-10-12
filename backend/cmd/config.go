@@ -45,19 +45,19 @@ func LoadConfig() (Config, error) {
 	v.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 	v.AutomaticEnv()
 
-	v.SetDefault("server.port", 8000)
+	v.SetDefault("server.port", 8080)
 	v.SetDefault("server.read_header_timeout", 5*time.Second)
 	v.SetDefault("server.shutdown_timeout", 10*time.Second)
 
 	v.SetDefault("http.game_path", "/game")
 
 	v.SetDefault("websocket.path", "/ws")
-	v.SetDefault("websocket.origin_patterns", []string{"localhost:3000"})
+	v.SetDefault("websocket.origin_patterns", []string{"*"})
 	v.SetDefault("websocket.max_message_bytes", int64(1<<20))
 
-	v.SetDefault("game.width", 50)
+	v.SetDefault("game.width", 100)
 	v.SetDefault("game.height", 50)
-	v.SetDefault("game.interval", 100*time.Millisecond)
+	v.SetDefault("game.interval", 150*time.Millisecond)
 	v.SetDefault("game.edge_mode", "limit")
 
 	var cfg Config
